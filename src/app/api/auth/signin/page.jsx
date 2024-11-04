@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import {redirect} from 'next/navigation';
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
@@ -9,11 +10,14 @@ export default function SignIn() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    await signIn("credentials", {
+    const res = await signIn("credentials", {
       redirect: false,
       username,
       password,
     });
+    if(res.ok) {
+      redirect('/');
+    }
   };
 
   return (

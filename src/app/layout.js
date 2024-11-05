@@ -28,7 +28,9 @@ export default function RootLayout({ children }) {
       >
         <AuthProvider>
           <Header />
-          {children}
+            <div className="min-h-screen bg-white pt-36">
+              {children}
+            </div>
           <Footer />
         </AuthProvider>
       </body>

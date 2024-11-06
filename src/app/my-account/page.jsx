@@ -1,7 +1,7 @@
 'use client'
 import Breadcrumbs from '@/utils/Breadcrumbs';
 import React, { useState } from 'react';
-import Sidebar from './SideBar';
+import Sidebar from './Sidebar';
 import { useUser } from '@/context/UserContext';
 
 export default function Page() {

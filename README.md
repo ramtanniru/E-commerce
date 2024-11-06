@@ -5,6 +5,9 @@ Here’s an updated README structure that reflects the directory layout you've p
 
 This is a fully functional e-commerce website built using Next.js and Tailwind CSS. The project integrates with the [Fake Store API](https://fakestoreapi.com/) to handle backend functionalities, delivering a responsive and interactive user experience based on the provided Figma design.
 
+## Demo
+[View demo video](https://www.loom.com/share/ae6f34c75e9b4a2586b5193adbf73441?sid=3e247745-56da-4cf9-9cf4-3a245494f746)
+
 ## Features
 
 - **Responsive UI**: The website is styled with Tailwind CSS for a consistent, responsive layout.

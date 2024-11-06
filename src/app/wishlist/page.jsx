@@ -1,18 +1,14 @@
 'use client'
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import { useCart } from '@/context/CartContext';
 import WishListCard from '@/components/HOC/WishListCard';
-import { useFetch } from '@/hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 import Link from 'next/link';
 import Card from '@/components/Card';
 
 function Products() {
   const {wishList,addToCart,removeFromWishList} = useCart();
-  const [products,setProducts] = useState([]);
-
-  useEffect(()=>{
-    useFetch(setProducts,'https://fakestoreapi.com/products?limit=5');
-  },[])
+  const { data: products } = useFetch('https://fakestoreapi.com/products');
 
   const moveAllToBag = () => {
     wishList.forEach((product) => {
@@ -28,8 +24,8 @@ function Products() {
         <button className='border-black border px-10 py-3' onClick={()=>moveAllToBag()}>Move All To Bag</button>
       </div>
       <div className='flex flex-wrap items-start gap-16'>
-        {wishList.map((product)=>(
-          <WishListCard product={product}/>
+        {wishList.map((product,id)=>(
+          <WishListCard product={product} key={id}/>
         ))}
       </div>
 
@@ -43,7 +39,7 @@ function Products() {
           <Link className="border-black border px-10 py-3" href="/products">See All</Link>
         </div>
         <div className="flex flex-wrap items-center gap-16">
-          {products.map((product)=>(<Card product={product}/>))}
+          {products.map((product,id)=>(<Card product={product} key={id}/>))}
         </div>
         <div className="flex justify-center items-center w-full mt-5">
           

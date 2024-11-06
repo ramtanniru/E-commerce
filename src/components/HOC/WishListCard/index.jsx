@@ -2,8 +2,7 @@
 import { useCart } from '@/context/CartContext';
 import Stars from '@/utils/Stars';
 import Image from 'next/image';
-import Link from 'next/link';
-import React,{useState} from 'react';
+import React from 'react';
 
 export default function WishListCard({ product }) {
   const {addToCart,removeFromWishList} = useCart();
@@ -18,11 +17,9 @@ export default function WishListCard({ product }) {
         boxShadow : '0px 2px 8px rgba(0, 0, 0, 0.075)'
       }}
       >
-        <img
-          src={product.image}
+        <Image src={product.image}
           alt={product.name}
-          className="h-48 w-48 object-contain py-3"
-        />
+          className="h-48 w-48 object-contain py-3" height={192} width={192}/>
 
         <div className='absolute z-10 top-0 right-0 p-3'>
           <button className='rounded-2xl p-2 bg-[#f5f5f5]' onClick={()=>removeFromWishList(product)}>

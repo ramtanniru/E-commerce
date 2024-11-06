@@ -13,7 +13,7 @@ export default function CartCard({ product }) {
         }}
         >
             <div className="flex items-center gap-4">
-                <img src={product.image} height={50} width={50} alt={product.title} className="rounded" />
+                <Image src={product.image} height={50} width={50} alt={product.title} className="rounded" />
                 <div className="flex flex-col">
                     <p className="text-lg font-semibold">{product.title}</p>
                     <p className="text-gray-500">${product.price.toFixed(2)}</p>

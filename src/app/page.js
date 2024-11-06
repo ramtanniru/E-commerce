@@ -1,8 +1,8 @@
 'use client'
-import React,{ useState, useEffect, useCallback } from "react";
-import { categoryData, tempCategory } from "@/utils/data";
+import React from "react";
+import { categoryData, categories } from "@/utils/data";
 import Image from "next/image";
-import { useFetch } from "@/hooks/useFetch";
+import useFetch from "@/hooks/useFetch";
 import Card from "@/components/Card";
 import Link from "next/link";
 import { services } from "@/utils/data";
@@ -10,17 +10,9 @@ import ServiceCard from "./about/ServiceCard";
 import Featured from "@/utils/Featured";
 
 export default function Home() {
-  const [flashSales,setFlashSales] = useState([]);
-  const [bestSelling,setBestSelling] = useState([]);
-  const [products,setProducts] = useState([]);
-  const [categories,setCategories] = useState([]);
-
-  useEffect(() => {
-    useFetch(setFlashSales, 'https://fakestoreapi.com/products?limit=5');
-    useFetch(setBestSelling, 'https://fakestoreapi.com/products?limit=5');
-    useFetch(setProducts, 'https://fakestoreapi.com/products?limit=10');
-    useFetch(setCategories, 'https://fakestoreapi.com/products/categories');
-  },[]);
+  const { data: flashSales } = useFetch('https://fakestoreapi.com/products?limit=5');
+  const { data: bestSelling } = useFetch('https://fakestoreapi.com/products?limit=5');
+  const { data: products } = useFetch('https://fakestoreapi.com/products?limit=5');
 
   return (
     <div className="flex flex-col gap-32 px-32 py-20">
@@ -38,7 +30,7 @@ export default function Home() {
         <div className="flex flex-col justify-start items-start gap-5 w-full">
           <div className="flex flex-row justify-start items-center gap-5">
             <div className="h-10 w-5 bg-red-500 rounded-md"></div>
-            <p className="text-red-500">Today's</p>
+            <p className="text-red-500">Today`&apos`s</p>
           </div>
           <div className="flex flex-row justify-between items-center w-full">
             <p className="text-2xl font-bold">Flash Sales</p>
@@ -53,7 +45,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-16">
-          {flashSales.map((product)=>(<Card product={product}/>))}
+          {flashSales.map((product,id)=>(<Card product={product} key={id}/>))}
         </div>
         <div className="flex justify-center items-center w-full mt-5">
           <Link className="px-8 py-3 bg-red-500 text-white text-base rounded-md" href="/products">View All Products</Link>
@@ -82,8 +74,8 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-16 w-full">
-          {tempCategory.map((category)=>(
-            <div className="w-1/6 border px-0 py-10 flex flex-col gap-3 justify-center items-center">
+          {categories.map((category,id)=>(
+            <div className="w-1/6 border px-0 py-10 flex flex-col gap-3 justify-center items-center" key={id}>
               <Image src={category.src} height={30} width={30} alt="logo"/>
               <p>{category.title}</p>
             </div>
@@ -106,7 +98,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-16">
-          {bestSelling.map((product)=>(<Card product={product}/>))}
+          {bestSelling.map((product,id)=>(<Card product={product} key={id}/>))}
         </div>
       </div>
 
@@ -132,7 +124,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-16">
-          {products.map((product)=>(<Card product={product}/>))}
+          {products.map((product,id)=>(<Card product={product} key={id}/>))}
         </div>
         <div className="flex justify-center items-center w-full mt-5">
           <Link className="px-8 py-3 bg-red-500 text-white text-base rounded-md" href="/products">View All Products</Link>

@@ -15,7 +15,7 @@ function ProductDetail() {
         setProduct(data);
     }
     fetchData();
-  },[])
+  },[id])
 
   return (
     <div className="product-detail">

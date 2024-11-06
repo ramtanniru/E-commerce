@@ -1,11 +1,10 @@
 "use client"
 import Breadcrumbs from '@/utils/Breadcrumbs';
 import Image from 'next/image';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 
-import React from 'react'
 
-export default function page() {
+export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');

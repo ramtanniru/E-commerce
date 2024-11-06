@@ -1,4 +1,7 @@
-'use client'
+// api/auth/error/page.jsx
+'use client';
+
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
@@ -9,7 +12,7 @@ const errorMessages = {
   default: "An unexpected error occurred. Please try again later."
 };
 
-export default function AuthError() {
+function AuthErrorContent() {
   const searchParams = useSearchParams();
   const error = searchParams.get('error'); // Access the 'error' query parameter
   const errorMessage = errorMessages[error] || errorMessages.default;
@@ -22,5 +25,13 @@ export default function AuthError() {
         Back to Sign In
       </Link>
     </div>
+  );
+}
+
+export default function AuthError() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <AuthErrorContent />
+    </Suspense>
   );
 }

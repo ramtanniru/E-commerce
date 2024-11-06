@@ -87,7 +87,7 @@ export const categoryData = [
   }
 ]
 
-export const tempCategory = [
+export const categories = [
   {
     src : '/category/phone.svg',
     title : 'Phone'

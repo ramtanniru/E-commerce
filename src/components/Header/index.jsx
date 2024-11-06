@@ -66,9 +66,9 @@ export default function Header() {
         </div>
         <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 py-5 md:px-20 xl:flex 2xl:px-32">
           <div className="flex w-full items-center justify-between xl:w-3/5">
-            <a href="/">
+            <Link href="/">
               <h1 className=" text-3xl font-semibold text-[#1F2937]">Exclusive</h1>
-            </a>
+            </Link>
         
             {/* <!-- Hamburger Toggle BTN --> */}
             <button
